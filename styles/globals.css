@@ -1,16 +1,37 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@font-face {
+  font-family: "formula";
+  src: url(../public/fonts/NeueMontreal-Light.woff2) format("woff2");
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "hallywood";
+  src: url(../public/fonts/Hallywood.woff) format("woff");
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "formula";
+  font-weight: 200;
+  color: rgba(0, 0, 0, 0.781);
+}
+
+html,
+body {
+  background-color: #ffffff;
+}
+
+section {
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h3 {
+  font-size: 2em;
 }

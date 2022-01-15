@@ -1,0 +1,18 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  margin-bottom: 100px;
+  padding-top: 100px;
+}
+
+.container {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 1000px;
+  grid-template-columns: repeat(3, 1fr);
+}

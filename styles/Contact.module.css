@@ -1,0 +1,45 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.label {
+  text-align: left;
+}
+.container {
+  text-align: center;
+  font-size: 1rem;
+  position: relative;
+  left: 0%;
+  top: 0;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.form {
+  height: 400px;
+  width: 100%;
+
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.input {
+  margin-bottom: 1rem;
+}
+
+.submit {
+  border: 1px solid rgb(109, 108, 108);
+  padding: 10px;
+  background-color: transparent;
+  margin-top: 1rem;
+}
+
+.submit:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

@@ -1,0 +1,30 @@
+.footer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  min-height: 200px;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.331); */
+  background-color: #383838;
+}
+
+.footerContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 1400px;
+  height: 200px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.footerContainer h4 {
+  color: #fcfcfc;
+}
+
+.logo {
+  font-family: "hallywood";
+  font-size: 2rem;
+}

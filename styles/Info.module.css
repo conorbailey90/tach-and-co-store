@@ -1,0 +1,21 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  height: 600px;
+  width: 100%;
+  margin-bottom: 100px;
+  padding-top: 100px;
+}
+
+.container {
+  position: relative;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 1000px;
+  /* height: 600px; */
+
+  background-color: rgba(128, 128, 128, 0.324);
+  padding: 1rem;
+}
