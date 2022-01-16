@@ -12,5 +12,35 @@
   transform: translateX(-50%);
   width: 80%;
   max-width: 1000px;
-  /* padding: 1rem; */
+}
+
+.productContainer {
+  display: flex;
+}
+
+.productInfo {
+  width: 40%;
+  padding: 0 20px;
+}
+.title {
+  margin-bottom: 20px;
+}
+
+.price {
+  margin-bottom: 20px;
+}
+
+.addToCart {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.addToCart:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }

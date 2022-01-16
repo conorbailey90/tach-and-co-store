@@ -25,7 +25,6 @@ function CartItem({id, name, quantity, line_total}){
                 <button onClick={decrementQuantity}>-</button>
                 <button onClick={incrementQuantity}>+</button>
                 <button onClick={removeItem}>Remove</button>
-
             </div>
         </div>
     )

@@ -5,14 +5,51 @@
   height: 300px;
 }
 
-.image {
+.productTile > a {
   width: 100%;
   height: 80%;
-  /* height: 56.25%; */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .image > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: 1s;
+}
+
+.productTile:hover .image img {
+  transform: scale(1.2);
+}
+
+.productInfo {
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addToCart {
+  opacity: 0;
+  pointer-events: none;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  transition: opacity 0.5s;
+}
+
+.productTile:hover .addToCart {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.addToCart:hover {
+  cursor: pointer;
+  background-color: aqua;
+  color: black;
 }

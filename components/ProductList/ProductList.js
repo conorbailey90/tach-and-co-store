@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import Product from "../Product/Product";
 
 import styles from './ProductList.module.css'
@@ -11,13 +11,7 @@ export default function ProductList({products}){
         <section className={styles.section}>
             <div className={styles.container}>
                     {products.map(product => (
-                        <div key={product.id}>
-                            <Link href={`/shop/${product.permalink}`}>
-                                <a>
-                                    <Product {...product} />
-                                </a>
-                            </Link>
-                        </div>
+                        <Product key={product.id} {...product} />
                     ))}
             </div>
         </section>

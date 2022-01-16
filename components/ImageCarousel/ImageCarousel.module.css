@@ -1,0 +1,38 @@
+.carousel {
+  width: 60%;
+  display: flex;
+  height: 500px;
+}
+
+.sidePanel {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.sidePanel img {
+  width: 100%;
+  max-height: 150px;
+}
+
+.mainImage {
+  width: 90%;
+  margin-left: 10px;
+  border: 1px solid black;
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.active {
+  border: 1px solid black;
+}
+
+.thumbnail:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
