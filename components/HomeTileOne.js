@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 
 import styles from '../styles/Home.module.css'
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function HomeTileOne({heading, text, image}) {
 
@@ -19,10 +19,10 @@ export default function HomeTileOne({heading, text, image}) {
     return (
         <div className={styles.tile}>
             <div className={styles.tileInfo}>
-                <h1>{heading}</h1><br />
+                <h3>{heading}</h3>
                 {paragraphs.map(p => (
                     <React.Fragment key={p.id}>
-                        <p >{p.text}</p><br />
+                        <p>{p.text}</p><br />
                     </React.Fragment>
                 ))}
             </div>

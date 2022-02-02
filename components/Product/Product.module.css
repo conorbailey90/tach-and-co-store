@@ -33,23 +33,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.addToCart {
-  opacity: 0;
-  pointer-events: none;
-  background-color: black;
-  color: white;
-  padding: 10px;
-  transition: opacity 0.5s;
-}
-
-.productTile:hover .addToCart {
-  pointer-events: all;
-  opacity: 1;
-}
-
-.addToCart:hover {
-  cursor: pointer;
-  background-color: aqua;
-  color: black;
-}

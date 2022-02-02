@@ -10,9 +10,12 @@ export default function ProductList({products}){
     return(
         <section className={styles.section}>
             <div className={styles.container}>
+            <h1>Products</h1>
+                <div className={styles.productList}>
                     {products.map(product => (
                         <Product key={product.id} {...product} />
                     ))}
+                </div>
             </div>
         </section>
     )

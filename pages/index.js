@@ -1,13 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link';
+import Footer from '../components/Footer/Footer';
 import HomeTileOne from '../components/HomeTileOne';
 // Update the path for your API client file.
 import Prismic from "@prismicio/client";
 import { Client } from '../utils/prismicHelpers';
-
+import { useMobileMenuState } from '../context/mobileMenu';
 import styles from '../styles/Home.module.css'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 
 
 export default function Home({homePageTiles}) {
@@ -17,12 +17,6 @@ export default function Home({homePageTiles}) {
   const landingText = useRef();
   const innerImage = useRef();
 
-  
-  let target = useRef(0);
-
-
-
-  
     useEffect(() => {
      setTiles(homePageTiles.reverse());
 
@@ -31,38 +25,17 @@ export default function Home({homePageTiles}) {
           landingText.current.style.opacity = '1';
         }
       }, 500);
-
-      const scrollListener =  window.addEventListener('scroll', (e) => {
-        if(landingText.current !== null){
-          target.current = window.scrollY;
-          landingText.current.style.transform = `translate3d(0, ${-target.current * 0.4}px, 0)`;
-          innerImage.current.style.transform = `scale(${target.current < 1 ? 1 : 1 + target.current * 0.0005})`
-        }
-      })
-    
-      return () => window.removeEventListener('scroll', scrollListener);
     }, [])
-
+ 
+    const {setMobileMenu} = useMobileMenuState();
     useEffect(() => {
-      let options = {
-        rootMargin: '0px',
-        threshold: 1.0
-      }
-
-      let callback = (entries, observer) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            entry.target.style.opacity = 1;
-          }
-        });
-      };
-      
-      let observer = new IntersectionObserver(callback, options);
-     
-    })
+      setMobileMenu(false);
+    }, []);
+  
 
   return (
-   <div>
+    <>
+   <div className={styles.wrapper}>
      <section className={styles.landing}>
 
        <div className={styles.imgOuter}>
@@ -86,10 +59,10 @@ export default function Home({homePageTiles}) {
           <HomeTileOne key={tile.uid} heading={tile.data.title[0].text} text={tile.data.text} image={tile.data.image.url} />
         ))}
        </div>
-
-       
      </section>
    </div>
+   <Footer />
+   </>
   )
 }
 

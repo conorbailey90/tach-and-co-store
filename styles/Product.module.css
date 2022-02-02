@@ -11,10 +11,11 @@
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
-  max-width: 1000px;
+  max-width: var(--max-container-width);
 }
 
 .productContainer {
+  width: 100%;
   display: flex;
 }
 
@@ -35,7 +36,7 @@
   height: 50px;
   background-color: white;
   border: 1px solid black;
-  margin-bottom: 20px;
+  margin-top: 1rem;
   font-size: 1.2rem;
 }
 
@@ -43,4 +44,35 @@
   cursor: pointer;
   background-color: black;
   color: white;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.textAreaInput {
+  width: 100%;
+  min-height: 200px;
+}
+
+@media only screen and (max-width: 800px) {
+  .productContainer {
+    flex-direction: column;
+  }
+
+  .productInfo {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+  .productInfo {
+    padding: 0;
+  }
 }

@@ -1,14 +1,21 @@
 import Layout from '../components/layout'
+import Footer from '../components/Footer/Footer'
 import { CartProvider } from '../context/cart'
+import { MobileMenuProvider } from '../context/mobileMenu';
+import {PersonalisationProvider} from '../context/personalisation'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <CartProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </CartProvider>
+    <PersonalisationProvider>
+      <CartProvider>
+        <MobileMenuProvider>
+          <Layout>
+              <Component {...pageProps} />
+          </Layout>
+        </MobileMenuProvider>
+      </CartProvider>
+    </PersonalisationProvider>
   )
 }
 

@@ -1,0 +1,73 @@
+.mobileMenuActive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  z-index: 100;
+  transition: 0.5s;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  z-index: 100;
+  transition: 0.5s;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  max-width: var(--max-container-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileNav {
+  position: relative;
+  top: -10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30vh;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.menuToggle {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.menuToggle span:nth-child(1) {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.menuToggle span:nth-child(2) {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

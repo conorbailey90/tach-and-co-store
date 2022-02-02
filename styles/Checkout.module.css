@@ -1,0 +1,39 @@
+.section {
+  height: 100vh;
+}
+
+.layout {
+  padding-top: 100px;
+  height: 100vh;
+}
+
+.emptySection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.emptyContainer {
+  padding-top: 100px;
+  font-size: 1rem;
+  position: relative;
+  left: 0%;
+  top: 0;
+  width: 80%;
+  max-width: var(--max-container-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyText {
+  position: relative;
+  top: -20vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}

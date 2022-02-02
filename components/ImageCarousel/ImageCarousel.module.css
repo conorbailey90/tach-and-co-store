@@ -1,7 +1,7 @@
 .carousel {
   width: 60%;
   display: flex;
-  height: 500px;
+  height: 300px;
 }
 
 .sidePanel {
@@ -35,4 +35,12 @@
 .thumbnail:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+
+@media only screen and (max-width: 800px) {
+  .carousel {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 2rem;
+  }
 }

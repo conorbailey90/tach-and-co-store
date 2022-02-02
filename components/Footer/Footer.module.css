@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: center;
   width: 80%;
-  max-width: 1400px;
+  max-width: var(--max-container-width);
   height: 200px;
   left: 50%;
   top: 0;
@@ -27,4 +27,14 @@
 .logo {
   font-family: "hallywood";
   font-size: 2rem;
+}
+
+.ig > svg > path {
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .footerContainer {
+    width: 90%;
+  }
 }

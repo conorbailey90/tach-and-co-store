@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import styles from './ImageCarousel.module.css'
+import { useState } from 'react';
+import styles from './ImageCarousel.module.css';
 
 export default function ImageCarousel({product}){
 
     const [mainImage, setMainImage] = useState(product.assets[0].url);
 
     function handleThumbnailClick(url){
-        setMainImage(url)
+        setMainImage(url);
     }
     return (
         <div className={styles.carousel}>

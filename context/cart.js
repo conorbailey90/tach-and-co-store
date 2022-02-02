@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { commerce } from "../lib/commerce";
 
 const CartStateContext = createContext();
@@ -23,12 +23,13 @@ const reducer = (state, action) => {
 
 export const CartProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, inititalState);
-
+  
     useEffect(() => {
         getCart()
-    }, [])
-    const setCart = payload => dispatch({type: SET_CART, payload})
+    }, []);
 
+    const setCart = payload => dispatch({type: SET_CART, payload})
+    
     const getCart = async () => {
         try {
             const cart = await commerce.cart.retrieve();
@@ -38,8 +39,14 @@ export const CartProvider = ({children}) => {
         }
     }
 
+    const refreshCart = async () => {
+        const newCart = await commerce.cart.refresh();
+        setCart(newCart)
+    }
+
+  
     return (
-        <CartDispatchContext.Provider value={{setCart}}>
+        <CartDispatchContext.Provider value={{setCart, refreshCart} }>
             <CartStateContext.Provider value={state}>
                 {children}
             </CartStateContext.Provider>

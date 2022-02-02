@@ -8,11 +8,27 @@
 
 .container {
   position: relative;
-  display: grid;
-  gap: 10px;
+
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
-  max-width: 1000px;
+  max-width: var(--max-container-width);
+}
+
+.productList {
+  gap: 10px;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 800px) {
+  .productList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
 }

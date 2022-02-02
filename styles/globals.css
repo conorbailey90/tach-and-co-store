@@ -1,3 +1,9 @@
+:root {
+  --main-bg-color: #ffffff;
+  --secondary-bg-color: #f5f5f5;
+  --max-container-width: 1200px;
+}
+
 @font-face {
   font-family: "formula";
   src: url(../public/fonts/NeueMontreal-Light.woff2) format("woff2");
@@ -22,6 +28,8 @@
 html,
 body {
   background-color: #ffffff;
+  overscroll-behavior: none;
+  overflow: hidden;
 }
 
 section {
