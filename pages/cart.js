@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Footer from "../components/Footer/Footer";
 import { useCartDispatch, useCartState } from "../context/cart";
 import { commerce } from '../lib/commerce'

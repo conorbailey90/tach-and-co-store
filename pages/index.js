@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Link from 'next/link';
 import Footer from '../components/Footer/Footer';
 import HomeTileOne from '../components/HomeTileOne';
@@ -7,7 +6,7 @@ import Prismic from "@prismicio/client";
 import { Client } from '../utils/prismicHelpers';
 import { useMobileMenuState } from '../context/mobileMenu';
 import styles from '../styles/Home.module.css'
-import { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 
 export default function Home({homePageTiles}) {
