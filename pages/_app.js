@@ -1,4 +1,4 @@
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import { CartProvider } from '../context/cart'
 import { MobileMenuProvider } from '../context/mobileMenu';
 import {PersonalisationProvider} from '../context/personalisation'
