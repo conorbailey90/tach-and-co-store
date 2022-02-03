@@ -1,5 +1,6 @@
 import styles from '../styles/Contact.module.css'
 import Footer from '../components/Footer/Footer'
+import { useEffect } from 'react';
 import { useMobileMenuState } from '../context/mobileMenu';
 
 export default function Contact() {

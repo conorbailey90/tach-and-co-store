@@ -22,10 +22,12 @@ export async function getStaticProps({ params }) {
   }
   
   export async function getStaticPaths() {
-    const { data: products } = await commerce.products.list();
+    const { data: products } = await commerce.products.list()
+    
+    let mappedProduct = products.filter(product => product.name === 'Personalised Bracelet');
   
     return {
-      paths: products.map((product) => ({
+      paths: mappedProduct.map((product) => ({
         params: {
           permalink: product.permalink,
         },
@@ -35,6 +37,7 @@ export async function getStaticProps({ params }) {
   }
   
   export default function ProductPage({ product }) {
+
     const [variants, setVariants] = useState(product.variant_groups);
     const [mainColor, setMainColor] = useState([]);
     const [size, setSize] = useState([]);
@@ -52,44 +55,58 @@ export async function getStaticProps({ params }) {
     useEffect(() => {
       setMobileMenu(false);
       let variantObject = {};
-      variants.forEach(variant => {
-        variantObject[variant.id] = variant.options[0].id;
-      })
+      try {
+        variants.forEach(variant => {
+          variantObject[variant.id] = variant.options[0].id;
+        })
+      }catch(err){
+        console.log(err)
+      }
       setChosenVariants(variantObject);
     }, []);
 
     useEffect(() => {
       let objectArray = [mainColor, size, mainDividerColor, characterColor, smallDividers];
       let variantObject = {};
-      objectArray.forEach(item => {
-        variantObject[item[0]] = item[1];
-      })
+      try{
+        objectArray.forEach(item => {
+          variantObject[item[0]] = item[1];
+        })
+      }catch(err){
+        console.log(err)
+      }
+
       setChosenVariants(variantObject);
     }, [mainColor, size, mainDividerColor, characterColor, smallDividers])
 
     
 
     useEffect(() => {
-      variants.forEach(variant => {
-        switch (variant.name) {
-          case 'Colour':
-            setMainColor([variant.id ,variant.options[0].id])
-            break;
-          case 'Size':
-            setSize([variant.id ,variant.options[0].id])
-          case 'Main Divider Colour':
-            setMainDividerColor([variant.id ,variant.options[0].id])
-            break;
-          case 'Character Colour':
-            setCharacterColor([variant.id ,variant.options[0].id])
-            break;
-          case 'Small Dividers':
-            setSmallDividers([variant.id ,variant.options[0].id])
-            break
-          default:
-            console.log(`Not a listed variant ${variant.name}`);
-        }
-      })
+      try{
+        variants.forEach(variant => {
+          switch (variant.name) {
+            case 'Colour':
+              setMainColor([variant.id ,variant.options[0].id])
+              break;
+            case 'Size':
+              setSize([variant.id ,variant.options[0].id])
+            case 'Main Divider Colour':
+              setMainDividerColor([variant.id ,variant.options[0].id])
+              break;
+            case 'Character Colour':
+              setCharacterColor([variant.id ,variant.options[0].id])
+              break;
+            case 'Small Dividers':
+              setSmallDividers([variant.id ,variant.options[0].id])
+              break
+            default:
+              console.log(`Not a listed variant ${variant.name}`);
+          }
+        })
+      }catch(err){
+        console.log(err)
+      }
+      
     },[])
 
     function handleMainColorChange(event) {
@@ -116,7 +133,7 @@ export async function getStaticProps({ params }) {
       let id = smallDividers[0];
       setSmallDividers([id, event.target.value]);
     }
-        
+
     return (
       <>
       <section className={styles.section}>
@@ -171,7 +188,6 @@ export async function getStaticProps({ params }) {
               <h4>How would you like to personalise your bracelet? Add a description here:</h4>
               <input className={styles.input} type="text" placeholder="Enter Name / Number / Initials here..." onChange={(e) => setPersonalisation(e.target.value)}></input>
               <br />
-
               <button className={styles.addToCart} onClick={addToCart}>Add to Cart </button>
             </div>
           </div>
