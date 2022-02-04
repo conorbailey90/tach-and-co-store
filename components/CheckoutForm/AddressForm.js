@@ -2,12 +2,13 @@
 
 import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
-import { InputLabel, Select, MenuItem, Button, Grid, Typography } from "@material-ui/core";
+import { InputLabel, Select, MenuItem, Grid, Typography } from "@material-ui/core";
 import {useForm, FormProvider} from 'react-hook-form';
 import FormInput from "./CustomTextField";
 import { CircularProgress } from '@material-ui/core';
 
 import { commerce } from '../../lib/commerce';
+import styles from './Form.module.css'
 
 export default function AddressForm({checkoutToken, next}){
 
@@ -79,7 +80,13 @@ export default function AddressForm({checkoutToken, next}){
     }, [shippingSubdivision])
 
     return (
-        loading ? <CircularProgress /> :
+        loading ? 
+        <>
+            <section className={styles.section}>
+                <CircularProgress /> 
+            </section>
+        </>
+        :
         <>
         <Typography variant="h6" gutterBottom>Shipping Address</Typography>
         <FormProvider {...methods} >
@@ -126,10 +133,10 @@ export default function AddressForm({checkoutToken, next}){
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                     <Link href={'/cart'}>
                         <a>
-                            <Button variant='outlined'>Back to Cart</Button>
+                            <button className={styles.backButton} variant='outlined'>Back to Cart</button>
                         </a>
                     </Link>
-                    <Button type='submit' variant='contained' color='primary'>Next</Button>
+                    <button className={styles.nextButton} type='submit'>Next</button>
                 </div>
             </form>
         </FormProvider>

@@ -30,7 +30,6 @@ export default function CheckoutPage(){
         setMobileMenu(false);
     }, []);
 
-
     useEffect(() => {
         const generateToken = async () => {
             try{    
@@ -66,7 +65,7 @@ export default function CheckoutPage(){
 
     const next = (data) => {
         setShippingData(data);
-        nextStep()
+        nextStep();
     }
 
     const Form = () => activeStep === 0 
@@ -121,7 +120,7 @@ export default function CheckoutPage(){
         <>
             <section className={styles.section}>
             <main className={styles.layout}>
-                <Paper className={styles.paper}>
+                <Paper elevation={0} className={styles.paper}>
                     <Typography variant='h4' align="center">Checkout</Typography>
                     <Stepper activeStep={activeStep} className={styles.stepper}>
                         {steps.map(step => (

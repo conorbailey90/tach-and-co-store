@@ -1,8 +1,10 @@
 import { usePersonalisationState } from "../../context/personalisation";
-import { Typography, Button, Divider } from "@material-ui/core"
+import { Typography, Divider } from "@material-ui/core"
 import { Elements, CardElement, ElementsConsumer } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 import Review from './Review'
+
+import styles from './Form.module.css'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
@@ -10,7 +12,7 @@ export default function PaymentForm({shippingData, checkoutToken, previousStep, 
     const {state} = usePersonalisationState()
     const handleSubmit = async (event, elements, stripe) => {
         event.preventDefault();
-        
+
         if(!stripe || !elements) return;
 
         const cardElement = elements.getElement(CardElement);
@@ -74,10 +76,10 @@ export default function PaymentForm({shippingData, checkoutToken, previousStep, 
                         <CardElement />
                         <br /><br />
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <Button variant="outlined" onClick={previousStep}>Back</Button>
-                            <Button type="submit" variant="contained" disabled={!stripe} color='primary'>
+                            <button className={styles.backButton}  onClick={previousStep}>Back</button>
+                            <button className={styles.nextButton} type="submit" disabled={!stripe} color='primary'>
                                 Pay {checkoutToken.live.subtotal.formatted_with_symbol}
-                            </Button>
+                            </button>
                         </div>
                     </form>
                 )}
