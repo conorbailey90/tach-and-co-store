@@ -34,6 +34,8 @@
 }
 
 .logo {
+  position: relative;
+  z-index: 10;
   font-size: 3rem;
   font-family: "hallywood";
 }
