@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Footer from '../components/Footer/Footer';
+import { makeStyles } from '@material-ui/core';
 import { useCartState, useCartDispatch } from '../context/cart';
 import AddressForm from '../components/CheckoutForm/AddressForm';
 import PaymentForm from '../components/CheckoutForm/PaymentForm';
@@ -25,6 +26,14 @@ export default function CheckoutPage(){
     const {refreshCart} = useCartDispatch();
 
     const {setMobileMenu} = useMobileMenuState();
+
+    const useStyles = makeStyles(() => ({
+        root: {
+          "&.MuiStepper-root": { padding: "24px 0" },
+        }
+      }));
+
+      const c = useStyles();
 
     useEffect(() => {
         setMobileMenu(false);
@@ -96,6 +105,7 @@ export default function CheckoutPage(){
             )
         }
 
+        
     const Confirmation = () => order.customer ? (
             <>
                 <div>
@@ -122,9 +132,9 @@ export default function CheckoutPage(){
             <main className={styles.layout}>
                 <Paper elevation={0} className={styles.paper}>
                     <Typography variant='h4' align="center">Checkout</Typography>
-                    <Stepper activeStep={activeStep} className={styles.stepper}>
+                    <Stepper className={c.root} activeStep={activeStep}>
                         {steps.map(step => (
-                            <Step key={step}>
+                            <Step  key={step}>
                                 <StepLabel>{step}</StepLabel>
                             </Step>
                         ))}
