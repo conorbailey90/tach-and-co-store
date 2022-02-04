@@ -16,7 +16,7 @@ export default function Contact() {
             <div className={styles.container}>
                 <h1 style={{textAlign: 'left'}}>Contact</h1><br />
                 <form className={styles.form} action="https://formsubmit.co/tachandco@gmail.com" method='POST'>
-                    <input type="hidden" name="_next" value="http://localhost:3000/thankyou" />
+                    <input type="hidden" name="_next" value="/thankyou" />
                     <label className={styles.label} htmlFor="name">Name</label>
                     <input className={styles.input} type="text" name="name" id="name" required />
                     <label className={styles.label} htmlFor="email">Email</label>
