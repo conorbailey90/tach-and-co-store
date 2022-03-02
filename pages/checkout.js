@@ -77,6 +77,8 @@ export default function CheckoutPage(){
         nextStep();
     }
 
+    // add
+
     const Form = () => activeStep === 0 
         ? <AddressForm checkoutToken={checkoutToken} next={next} />
         : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} previousStep={previousStep} nextStep={nextStep} onCaptureCheckout={handleCaptureCheckout}/>
