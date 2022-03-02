@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
   }
   
   export default function ProductPage({ product }) {
-
+    console.log(product.variant_groups)
     const [variants, setVariants] = useState(product.variant_groups);
     const [mainColor, setMainColor] = useState([]);
     const [size, setSize] = useState([]);
@@ -85,18 +85,18 @@ export async function getStaticProps({ params }) {
       try{
         variants.forEach(variant => {
           switch (variant.name) {
-            case 'Colour':
+            case 'Main Colour':
               setMainColor([variant.id ,variant.options[0].id])
               break;
-            case 'Size':
+            case 'Bracelet Length':
               setSize([variant.id ,variant.options[0].id])
-            case 'Main Divider Colour':
+            case 'Divider Colour':
               setMainDividerColor([variant.id ,variant.options[0].id])
               break;
             case 'Character Colour':
               setCharacterColor([variant.id ,variant.options[0].id])
               break;
-            case 'Small Dividers':
+            case 'Small Dividers (only in silver)':
               setSmallDividers([variant.id ,variant.options[0].id])
               break
             default:
@@ -147,7 +147,7 @@ export async function getStaticProps({ params }) {
               <br />
               <h4>Select color</h4>
               <select className={styles.input} value={mainColor[1]} onChange={handleMainColorChange}>
-                {variants.filter(variant => variant.name === 'Colour')[0].options.map(variant => (
+                {variants.filter(variant => variant.name === 'Main Colour')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
                 ))}
               </select>
@@ -155,7 +155,7 @@ export async function getStaticProps({ params }) {
               <br />
               <h4>Select size:</h4>
               <select className={styles.input} value={size[1]} onChange={handleSizeChange}>
-                {variants.filter(variant => variant.name === 'Size')[0].options.map(variant => (
+                {variants.filter(variant => variant.name === 'Bracelet Length')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
                 ))}
               </select>
@@ -163,7 +163,7 @@ export async function getStaticProps({ params }) {
               <br />
               <h4>Select divider colour:</h4>
               <select className={styles.input} value={mainDividerColor[1]} onChange={handleMainDividerColourChange}>
-                {variants.filter(variant => variant.name === 'Main Divider Colour')[0].options.map(variant => (
+                {variants.filter(variant => variant.name === 'Divider Colour')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
                 ))}
               </select>
@@ -179,7 +179,7 @@ export async function getStaticProps({ params }) {
               <br />
               <h4>Add small divider between each letter?</h4>
               <select className={styles.input} value={smallDividers[1]} onChange={handleSmallDividersChange}>
-                {variants.filter(variant => variant.name === 'Small Dividers')[0].options.map(variant => (
+                {variants.filter(variant => variant.name === 'Small Dividers (only in silver)')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
                 ))}
               </select>

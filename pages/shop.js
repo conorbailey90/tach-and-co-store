@@ -23,7 +23,7 @@ export default function ProductsPage({products}){
 }
 
 export async function getStaticProps(){
-
+    try{
         const {data: products} = await commerce.products.list();
         return {
             props: {
@@ -31,4 +31,14 @@ export async function getStaticProps(){
             },
             revalidate: 10, // In seconds
         }
+    }catch(err){
+        console.log(err)
+        
+        return{
+            props: err
+        }
     }
+    
+
+    
+}
