@@ -73,5 +73,6 @@ export async function getStaticProps(context) {
 
   return {
     props: { homePageTiles }, // will be passed to the page component as props
+    revalidate: 10, // In seconds
   }
 }
