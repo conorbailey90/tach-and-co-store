@@ -77,7 +77,6 @@ export default function CheckoutPage(){
         nextStep();
     }
 
-    // add
 
     const Form = () => activeStep === 0 
         ? <AddressForm checkoutToken={checkoutToken} next={next} />
@@ -118,7 +117,7 @@ export default function CheckoutPage(){
                 <br />
                 <Link href={'/'}>
                     <a>
-                        <button variant='outlined' type="button">Baxk to Home</button>
+                        <button variant='outlined' type="button">Back to Home</button>
                     </a>
                 </Link>
             </>

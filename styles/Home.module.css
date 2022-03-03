@@ -46,14 +46,14 @@
   border-radius: 8px;
   width: 80%;
   max-width: var(--max-container-width);
-  height: calc(100vh - 200px);
+  height: calc(95vh - 200px);
   overflow: hidden;
 }
 
 .imgInner {
   position: absolute;
   inset: 0;
-  background-image: url("https://dr.savee-cdn.com/things/6/0/6dd911784105052ae0e04c.jpg");
+  background-image: url("../public/images/1.jpg");
   background-position: center;
   background-size: cover;
 }

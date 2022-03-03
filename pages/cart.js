@@ -6,7 +6,7 @@ import Link from "next/link";
 import styles from '../styles/Cart.module.css'
 import { useMobileMenuState } from '../context/mobileMenu';
 
-function CartItem({id, name, quantity, line_total, image}){
+function CartItem({id, name, quantity, line_total, selected_options, image}){
 
     const {setCart} = useCartDispatch();
 
@@ -35,6 +35,11 @@ function CartItem({id, name, quantity, line_total, image}){
             <div className={styles.itemInfo}>
                 <p>{name}</p>
                 <p>Quantity: {quantity}</p>
+                <ul>
+                {selected_options.map(option => (
+                    <li>{option.group_name}: {option.option_name}</li>
+                ))}
+                </ul>
                 <div className={styles.quantity}>
                         <div className={styles.quantityBtnMinus} onClick={decrementQuantity}><span></span></div>
                         <div className={styles.quantityBtnPlus} onClick={incrementQuantity}><span></span><span></span></div>
@@ -74,7 +79,6 @@ export default function CartPage(){
                 <h1>Cart</h1>
                 <div className={styles.content}>
                     <div className={styles.productList}>
-                        
                         {line_items.map(item => <CartItem key={item.id} {...item} />)}
                     </div>
                     <div className={styles.orderSummary}>
