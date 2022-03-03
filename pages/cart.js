@@ -36,8 +36,11 @@ function CartItem({id, name, quantity, line_total, selected_options, image}){
                 <p>{name}</p>
                 <p>Quantity: {quantity}</p>
                 <ul>
-                {selected_options.map(option => (
+                {selected_options.map((option, idx) => (
+                    <div key={idx}>
                     <li>{option.group_name}: {option.option_name}</li>
+                    <br />
+                    </div>
                 ))}
                 </ul>
                 <div className={styles.quantity}>

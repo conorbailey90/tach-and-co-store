@@ -109,7 +109,7 @@ export default function AddressForm({checkoutToken, next}){
                         </Select>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <InputLabel>Shipping Subdivisions</InputLabel>
+                        <InputLabel>Region</InputLabel>
                         <Select value={shippingSubdivision ? shippingSubdivision : ''} fullWidth onChange={(e) => setShippingSubdivision(e.target.value)}>
                             {subdivisions.map(subdivision => (
                                 <MenuItem key={subdivision.id} value={subdivision.id}>

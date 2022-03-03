@@ -45,7 +45,7 @@
 
 .itemTile {
   display: flex;
-  height: 250px;
+  height: 300px;
   border-top: 1px solid rgba(0, 0, 0, 0.399);
   border-bottom: 1px solid rgba(0, 0, 0, 0.399);
   margin-top: 0.5rem;
@@ -56,7 +56,7 @@
   position: relative;
   top: 5%;
   flex: 1;
-  height: 90%;
+  height: 50%;
 }
 
 .itemImg > img {

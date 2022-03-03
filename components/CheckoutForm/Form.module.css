@@ -26,6 +26,10 @@
   cursor: pointer;
 }
 
+.input {
+  width: 100%;
+}
+
 @media only screen and (max-width: 600px) {
   .backButton {
     background-color: var(--main-bg-color);

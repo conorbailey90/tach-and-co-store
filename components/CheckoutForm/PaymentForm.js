@@ -9,10 +9,15 @@ import styles from './Form.module.css'
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function PaymentForm({shippingData, checkoutToken, previousStep, nextStep, onCaptureCheckout }){
-    const {state} = usePersonalisationState()
+    // console.log(shippingData)
+    // console.log(checkoutToken.live)
+    const shippingCost = checkoutToken.live.shipping.available_options.filter(option => option.countries[0] === shippingData.shippingCountry)[0].price.raw
+    // const shippingCost = checkoutToken.live.shipping.available_options.filter(option => option.countries[0] === shippingData.shippingCountry).price.formatted_with_symbol;
+    // console.log(`Shipping cost: ${shippingCost}`)
+    const {state} = usePersonalisationState();
     const handleSubmit = async (event, elements, stripe) => {
         event.preventDefault();
-
+        
         if(!stripe || !elements) return;
 
         const cardElement = elements.getElement(CardElement);
@@ -66,7 +71,7 @@ export default function PaymentForm({shippingData, checkoutToken, previousStep, 
 
     return (
        <>
-        <Review checkoutToken={checkoutToken}/>
+        <Review checkoutToken={checkoutToken} shippingData={shippingData}/>
         <Divider />
         <Typography variant="h6" gutterBottom style={{margin: '20px 0'}}>Payment method</Typography>
         <Elements stripe={stripePromise}> 
@@ -78,7 +83,7 @@ export default function PaymentForm({shippingData, checkoutToken, previousStep, 
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
                             <button className={styles.backButton}  onClick={previousStep}>Back</button>
                             <button className={styles.nextButton} type="submit" disabled={!stripe} color='primary'>
-                                Pay {checkoutToken.live.subtotal.formatted_with_symbol}
+                                Pay £{checkoutToken.live.subtotal.raw + shippingCost}
                             </button>
                         </div>
                     </form>

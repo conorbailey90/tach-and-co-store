@@ -142,10 +142,11 @@ export async function getStaticProps({ params }) {
             <ImageCarousel product={product} />
             <div className={styles.productInfo}>
               <h3 className={styles.title}>{product.name}</h3>
-              <h4 className={styles.price} >{product.price.formatted_with_symbol}</h4>
+              <h2 className={styles.price} >{product.price.formatted_with_symbol}</h2>
               <div className={styles.description} dangerouslySetInnerHTML={{__html : product.description}}></div>
               <br />
               <h4>Select color</h4>
+              <br />
               <select className={styles.input} value={mainColor[1]} onChange={handleMainColorChange}>
                 {variants.filter(variant => variant.name === 'Main Colour')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
@@ -153,7 +154,9 @@ export async function getStaticProps({ params }) {
               </select>
               <br />
               <br />
+              <br />
               <h4>Select size:</h4>
+              <br />
               <select className={styles.input} value={size[1]} onChange={handleSizeChange}>
                 {variants.filter(variant => variant.name === 'Bracelet Length')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
@@ -161,7 +164,9 @@ export async function getStaticProps({ params }) {
               </select>
               <br />
               <br />
+              <br />
               <h4>Select divider colour:</h4>
+              <br />
               <select className={styles.input} value={mainDividerColor[1]} onChange={handleMainDividerColourChange}>
                 {variants.filter(variant => variant.name === 'Divider Colour')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
@@ -169,7 +174,9 @@ export async function getStaticProps({ params }) {
               </select>
               <br />
               <br />
+              <br />
               <h4>Select letter / number colour:</h4>
+              <br />
               <select className={styles.input} value={characterColor[1]} onChange={handleCharacterColorChange}>
                 {variants.filter(variant => variant.name === 'Character Colour')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
@@ -177,7 +184,9 @@ export async function getStaticProps({ params }) {
               </select>
               <br />
               <br />
+              <br />
               <h4>Add small divider between each letter?</h4>
+              <br />
               <select className={styles.input} value={smallDividers[1]} onChange={handleSmallDividersChange}>
                 {variants.filter(variant => variant.name === 'Small Dividers (only in silver)')[0].options.map(variant => (
                   <option value={variant.id} key={variant.name}>{variant.name}</option>
@@ -185,8 +194,11 @@ export async function getStaticProps({ params }) {
               </select>
               <br />
               <br />
-              <h4>How would you like to personalise your bracelet? Add a description here:</h4>
+              <br />
+              <h4>Add personalisation</h4>
+              <br />
               <input className={styles.input} type="text" placeholder="Enter Name / Number / Initials here..." onChange={(e) => setPersonalisation(e.target.value)}></input>
+              <br />
               <br />
               <button className={styles.addToCart} onClick={addToCart}>Add to Cart </button>
             </div>

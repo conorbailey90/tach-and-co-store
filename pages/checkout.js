@@ -110,21 +110,26 @@ export default function CheckoutPage(){
     const Confirmation = () => order.customer ? (
             <>
                 <div>
-                    <Typography variant='h5'>Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}</Typography>
+                    <br />
+                    <Typography variant='subtitle2'>Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}</Typography>
+                    <br />
                     <Divider />
+                    <br />
                     <Typography variant='subtitle2'>Order ref: {order.customer_reference}</Typography>
                 </div>
                 <br />
                 <Link href={'/'}>
                     <a>
-                        <button variant='outlined' type="button">Back to Home</button>
+                        <button className={styles.bhButton} type="button">Back to Home</button>
                     </a>
                 </Link>
             </>
         ) : (
-            <div className={styles.spinner}>
-                <CircularProgress />
-            </div>
+            <section className={styles.emptySection}>
+                <div className={styles.emptyContainer}>
+                    <CircularProgress />
+                </div>
+            </section>
         )
 
     return (
