@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
   }
   
   export default function ProductPage({ product }) {
-    console.log(product.variant_groups)
+
     const [variants, setVariants] = useState(product.variant_groups);
     const [mainColor, setMainColor] = useState([]);
     const [size, setSize] = useState([]);

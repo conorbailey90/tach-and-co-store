@@ -11,7 +11,6 @@ export default function Layout({ children }) {
   const {pathname} = useRouter();
   const appContainer = useRef();
   useEffect(() => {
-    // console.log(pathname);
     appContainer.current.scrollTop = 0;
   }, [pathname])
 

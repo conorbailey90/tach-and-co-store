@@ -10,7 +10,7 @@ import { useState, useEffect, useRef } from 'react'
 
 
 export default function Home({homePageTiles}) {
- 
+
   const [tiles, setTiles] = useState([])
 
   const landingText = useRef();
@@ -55,7 +55,7 @@ export default function Home({homePageTiles}) {
      <section className={styles.section}>
        <div className={styles.sectionContainer}>
         {tiles.map(tile => (
-          <HomeTileOne key={tile.uid} heading={tile.data.title[0].text} text={tile.data.text} image={tile.data.image.url} />
+          <HomeTileOne key={tile.uid} uid={tile.uid} heading={tile.data.title[0].text} text={tile.data.text} image={tile.data.image.url} />
         ))}
        </div>
      </section>

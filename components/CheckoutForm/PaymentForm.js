@@ -1,7 +1,9 @@
 import { usePersonalisationState } from "../../context/personalisation";
 import { Typography, Divider } from "@material-ui/core"
+import { commerce } from "../../lib/commerce";
 import { Elements, CardElement, ElementsConsumer } from "@stripe/react-stripe-js"
-import { loadStripe } from "@stripe/stripe-js"
+import { loadStripe } from "@stripe/stripe-js";
+import { useState, useRef } from "react";
 import Review from './Review'
 
 import styles from './Form.module.css'
@@ -9,12 +11,33 @@ import styles from './Form.module.css'
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function PaymentForm({shippingData, checkoutToken, previousStep, nextStep, onCaptureCheckout }){
-    // console.log(shippingData)
-    // console.log(checkoutToken.live)
-    const shippingCost = checkoutToken.live.shipping.available_options.filter(option => option.countries[0] === shippingData.shippingCountry)[0].price.raw
-    // const shippingCost = checkoutToken.live.shipping.available_options.filter(option => option.countries[0] === shippingData.shippingCountry).price.formatted_with_symbol;
-    // console.log(`Shipping cost: ${shippingCost}`)
+
+    const shippingCost = checkoutToken.live.shipping.available_options.filter(option => option.countries[0] === shippingData.shippingCountry)[0].price.raw;
     const {state} = usePersonalisationState();
+    const couponInput = useRef();
+    const circularContainer = useRef();   
+
+    const [total, setTotal] = useState(checkoutToken.live.subtotal.raw + shippingCost);
+    const [discountApplied, setDiscountApplied] = useState(false);
+    const [saving, setSaving] = useState('');
+
+    async function handleSetDiscount(){
+        const coupon = couponInput.current.value;
+        circularContainer.current.style.opacity = 1;
+        try{
+            const response = await commerce.checkout.checkDiscount(checkoutToken.id, { code: coupon })
+            console.log(response)
+            setTotal(+response.live.total.formatted + +shippingCost);
+            setDiscountApplied(true);
+            setSaving(response.discount.amount_saved.formatted_with_symbol)
+
+        }catch(err){
+            alert('Coupon invaild')
+        }
+        
+        circularContainer.current.style.opacity = 0;
+    }
+
     const handleSubmit = async (event, elements, stripe) => {
         event.preventDefault();
         
@@ -71,7 +94,7 @@ export default function PaymentForm({shippingData, checkoutToken, previousStep, 
 
     return (
        <>
-        <Review checkoutToken={checkoutToken} shippingData={shippingData}/>
+        <Review checkoutToken={checkoutToken} shippingCost={shippingCost} total={total} saving={saving} couponInput={couponInput} circularContainer={circularContainer} handleSetDiscount={handleSetDiscount} discountApplied={discountApplied}/>
         <Divider />
         <Typography variant="h6" gutterBottom style={{margin: '20px 0'}}>Payment method</Typography>
         <Elements stripe={stripePromise}> 
@@ -83,7 +106,7 @@ export default function PaymentForm({shippingData, checkoutToken, previousStep, 
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
                             <button className={styles.backButton}  onClick={previousStep}>Back</button>
                             <button className={styles.nextButton} type="submit" disabled={!stripe} color='primary'>
-                                Pay £{checkoutToken.live.subtotal.raw + shippingCost}
+                                Pay £{total}
                             </button>
                         </div>
                     </form>

@@ -35,14 +35,12 @@ export async function getStaticProps({ params }) {
   }
   
   export default function ProductPage({ product }) {
-    console.log(product.variant_groups)
     const [variants, setVariants] = useState(product.variant_groups);
     const [mainColor, setMainColor] = useState([]);
     const [size, setSize] = useState([]);
     const [mainDividerColor, setMainDividerColor] = useState([]);
     const [chosenVariants, setChosenVariants] = useState({});
     const { setCart } = useCartDispatch();
-    // const addToCart = () => commerce.cart.add(product.id, 1).then(({cart}) => setCart(cart));
     const addToCart = () => commerce.cart.add(product.id, 1, chosenVariants).then(({cart}) => setCart(cart));
     const {setMobileMenu} = useMobileMenuState();
 

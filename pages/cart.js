@@ -25,7 +25,14 @@ function CartItem({id, name, quantity, line_total, selected_options, image}){
     useEffect(() => {
       setMobileMenu(false);
     }, []);
-
+    const selectedOptions = () => {
+        let string = '';
+        for(let i = 0; i < selected_options.length; i++){
+            string += `${selected_options[i].option_name} / `
+            
+        }
+        return string.slice(0, -2);
+    }
 
     return (
         <div className={styles.itemTile}>
@@ -33,16 +40,11 @@ function CartItem({id, name, quantity, line_total, selected_options, image}){
                 <img src={image.url}></img>
             </div>
             <div className={styles.itemInfo}>
-                <p>{name}</p>
+                <h2>{name}</h2>
                 <p>Quantity: {quantity}</p>
-                <ul>
-                {selected_options.map((option, idx) => (
-                    <div key={idx}>
-                    <li>{option.group_name}: {option.option_name}</li>
-                    <br />
-                    </div>
-                ))}
-                </ul>
+    
+                {selectedOptions()}
+   
                 <div className={styles.quantity}>
                         <div className={styles.quantityBtnMinus} onClick={decrementQuantity}><span></span></div>
                         <div className={styles.quantityBtnPlus} onClick={incrementQuantity}><span></span><span></span></div>

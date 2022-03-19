@@ -1,0 +1,28 @@
+.circularContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.discountInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  padding: 0.5rem;
+}
+
+.discountBtn {
+  background: #000000;
+  margin-left: 5px;
+  color: #ffffff;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
