@@ -24,7 +24,7 @@ export async function getStaticProps({ params }) {
   export async function getStaticPaths() {
     const { data: products } = await commerce.products.list()
     
-    let mappedProduct = products.filter(product => product.name === 'Personalised Bracelet');
+    let mappedProduct = products.filter(product => product.name === 'The Personalised Bracelet');
   
     return {
       paths: mappedProduct.map((product) => ({

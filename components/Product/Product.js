@@ -7,10 +7,10 @@ import styles from './Product.module.css'
 
 export default function Product({id, name, price, image, permalink}){
     const { setCart } = useCartDispatch()
-
+    console.log(name)
     return (
         <div className={styles.productTile}>
-            <Link href={name === 'Personalised Bracelet' ? `/shop/personalised/${permalink}` : `/shop/${permalink}`}>
+            <Link href={name === 'The Personalised Bracelet' ? `/shop/personalised/${permalink}` : `/shop/${permalink}`}>
                 <a>
                     <div className={styles.image}>
                         <img src={image.url} alt="bracelet"></img>
