@@ -9,6 +9,7 @@ export default function MobileMenu(){
     return(
         <div  className={mobileMenuContext.state ? styles.mobileMenuActive : styles.mobileMenu}>
             <div className={styles.container}>
+                <h1 className={styles.mobileNavLogo}>Tash & Co.</h1>
                 <div onClick={() => mobileMenuContext.setMobileMenu(false)} className={styles.menuToggle}>
                     <span></span>
                     <span></span>
